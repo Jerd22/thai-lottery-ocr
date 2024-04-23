@@ -77,5 +77,5 @@ async def extract_text(request: Request):
 #    label_no = GetData(sfile).replace("\n","").replace(" ","")
 #    return {"no": label_no}
 
-if __name__ == "__main__":
-    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
+#if __name__ == "__main__":
+#    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
