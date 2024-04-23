@@ -1,0 +1,1 @@
+web: python lottery.py runserver %PORT%
