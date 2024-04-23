@@ -1,1 +1,1 @@
-web: uvicorn app.lottery:app --host=0.0.0.0 --port=${PORT:-5000}
+web: uvicorn lottery:app --host=0.0.0.0 --port=${PORT:-5000}
