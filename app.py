@@ -16,10 +16,6 @@ class ImageType(BaseModel):
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-start = time.time()
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
-end = time.time()
-
 def GetData(label_no_crop):
   label_no_crop_gray = cv2.cvtColor(label_no_crop, cv2.COLOR_BGR2GRAY)
   th, threshold = cv2.threshold(label_no_crop_gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)  
