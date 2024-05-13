@@ -43,11 +43,11 @@ def read_img(img):
   text = pytesseract.image_to_string(label_no_crop_gray, lang="eng")
   return(text)
 
-@app.get("/")
+@app.get("/lottery")
 def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
  
-@app.post("/extract_text")
+@app.post("/lottery/extract_text")
 async def extract_text(request: Request):
     label = ""
     if request.method == "POST":
@@ -73,5 +73,5 @@ async def extract_text(request: Request):
 #    label_no = GetData(sfile).replace("\n","").replace(" ","")
 #    return {"no": label_no}
 
-#if __name__ == "__main__":
-#    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
