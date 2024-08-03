@@ -43,11 +43,15 @@ def read_img(img):
   text = pytesseract.image_to_string(label_no_crop_gray, lang="eng")
   return(text)
 
-@app.get("/lottery")
+@app.get("/")
+def welcome(request: Request):
+  return templates.TemplateResponse("welcome.html", {"request": request})
+
+@app.get("/lotto")
 def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
  
-@app.post("/lottery/extract_text")
+@app.post("/lotto/extract_text")
 async def extract_text(request: Request):
     label = ""
     if request.method == "POST":
@@ -63,6 +67,9 @@ async def extract_text(request: Request):
         label =  read_img(label_no_crop)
  
     return templates.TemplateResponse("index.html", {"request": request, "label": label})
+
+if __name__ == "__main__":
+  uvicorn.run("app:app", host="0.0.0.0", port=80, log_level="info", reload=True, workers=2)
 
 #async def create_upload_file(uploaded_file: UploadFile = File(...)):
 #    file_location = f"files/{uploaded_file.filename}"

@@ -1,4 +1,4 @@
-FROM python:3.10-alpine AS builder
+FROM python:3-slim-buster AS builder
  
 WORKDIR /app
  
@@ -21,7 +21,7 @@ COPY app.py app.py
  
 ENV VIRTUAL_ENV=/app/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
- 
+
 EXPOSE 8000
- 
-CMD [ "uvicorn", "--host", "0.0.0.0", "app:app" ]
+
+CMD [ "python3", "app.py" ]
