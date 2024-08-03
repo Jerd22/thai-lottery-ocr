@@ -69,7 +69,7 @@ async def extract_text(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "label": label})
 
 if __name__ == "__main__":
-  uvicorn.run("app:app", host="0.0.0.0", port=80, log_level="info", reload=True, workers=2)
+  uvicorn.run("app:app", host="0.0.0.0", port=80, log_level="info", reload=True, workers=1)
 
 #async def create_upload_file(uploaded_file: UploadFile = File(...)):
 #    file_location = f"files/{uploaded_file.filename}"
